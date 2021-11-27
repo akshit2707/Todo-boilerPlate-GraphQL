@@ -1,7 +1,7 @@
-import getUserId from '../utils/getUserId'
+import getTodoId from '../utils/getTodoId'
 
 const Query = {
-    users(parent, args, { prisma }, info) {
+    Todos(parent, args, { prisma }, info) {
         const opArgs = {
             first: args.first,
             skip: args.skip,
@@ -17,16 +17,7 @@ const Query = {
             }
         }
 
-        return prisma.query.users(opArgs, info)
-    },
-    me(parent, args, { prisma, request }, info) {
-        const userId = getUserId(request)
-        
-        return prisma.query.user({
-            where: {
-                id: userId
-            }
-        })
+        return prisma.query.Todos(opArgs, info)
     }
 }
 

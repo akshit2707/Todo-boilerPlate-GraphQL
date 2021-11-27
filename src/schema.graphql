@@ -1,44 +1,34 @@
-# import UserOrderByInput from './generated/prisma.graphql'
+# import TodoOrderByInput from './generated/prisma.graphql'
 
 type Query {
-    users(query: String, first: Int, skip: Int, after: String, orderBy: UserOrderByInput): [User!]!
-    me: User!
+    Todos(query: String, first: Int, skip: Int, after: String, orderBy: TodoOrderByInput): [Todo!]!
 }
 
 type Mutation {
-    createUser(data: CreateUserInput!): AuthPayload!
-    login(data: LoginUserInput!): AuthPayload!
-    deleteUser: User!
-    updateUser(data: UpdateUserInput!): User!
+    createTodo(data: CreateTodoInput!): AuthPayload!
+    deleteTodo: Todo!
+    updateTodo(data: UpdateTodoInput!): Todo!
 }
 
 # type Subscription {
 
 # }
 
-type AuthPayload {
-    token: String!
-    user: User!
-}
 
-input CreateUserInput {
+input CreateTodoInput {
     name: String!
     email: String!
     password: String!
 }
 
-input LoginUserInput {
-    email: String!
-    password: String!
-}
 
-input UpdateUserInput {
+input UpdateTodoInput {
     name: String
     email: String
     password: String
 }
 
-type User {
+type Todo {
     id: ID!
     name: String!
     email: String
